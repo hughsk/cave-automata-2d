@@ -1,0 +1,28 @@
+{
+  "name": "cave-automata-2d",
+  "version": "0.0.1",
+  "description": "Generate 2D cave layouts in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "node eyeball-test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hughsk/cave-automata-2d.git"
+  },
+  "author": "Hugh Kennedy <hughskennedy@gmail.com> (http://hughskennedy.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "ndarray": "~0.2.4",
+    "ndarray-fill": "0.0.0"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "cave",
+    "cellular",
+    "automata",
+    "procedural",
+    "content",
+    "generation"
+  ]
+}
