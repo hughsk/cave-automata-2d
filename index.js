@@ -30,7 +30,7 @@ function generate(array, opts) {
     for (y = 0; y < height; y += 1)
     for (x = 0; x < width; x += 1) {
       n = 0
-      // Moore's neighborhood: the 8
+      // Moore neighborhood: the 8
       // surrounding points on the grid.
       for (nx = -hood; nx <= hood; nx += 1)
       for (ny = -hood; ny <= hood; ny += 1) {
