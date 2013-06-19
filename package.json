@@ -1,6 +1,6 @@
 {
   "name": "cave-automata-2d",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Generate 2D cave layouts in JavaScript",
   "main": "index.js",
   "scripts": {
