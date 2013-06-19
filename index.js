@@ -1,5 +1,7 @@
 var fill = require('ndarray-fill')
 var ndarray = require('ndarray')
+var neighborhood = require('moore')(1, 2).concat([[0,0]])
+var neighbors = neighborhood.length
 
 module.exports = generate
 function generate(array, opts) {
@@ -15,35 +17,37 @@ function generate(array, opts) {
     , shouldFill = 'fill' in opts ? opts.fill : true
 
   if (shouldFill) fill(array, function(x, y) {
-    return Math.random() <= density ? 1 : 0
+    return Math.random() <= density || (
+      x <= 0 || x >= width-1 ||
+      y <= 0 || y >= height-1
+    ) ? 1 : 0
   })
 
   function iterate(inputBuffer, outputBuffer) {
     var input = inputBuffer.data
       , output = outputBuffer.data
-      , width = inputBuffer.shape[0]
-      , height = inputBuffer.shape[1]
+      , width = inputBuffer.shape[1]
+      , height = inputBuffer.shape[0]
       , length = input.length
-      , n = 0, i = 0
+      , n = 0, i = 0, m = 0
       , x, y, nx, ny
 
-    for (y = 0; y < height; y += 1)
-    for (x = 0; x < width; x += 1) {
+    for (x = 0; x < width; x += 1)
+    for (y = 0; y < height; y += 1) {
       n = 0
-      // Moore neighborhood: the 8
-      // surrounding points on the grid.
-      for (nx = -hood; nx <= hood; nx += 1)
-      for (ny = -hood; ny <= hood; ny += 1) {
-        n += (
-          // Ignore the current position.
-         !(nx || ny) &&
-          // Consider grid edges as "on".
-          x + nx < 0 &&
-          x + nx >= width &&
-          y + ny < 0 &&
+
+      for (m = 0; m < neighbors; m += 1) {
+        nx = neighborhood[m][0]
+        ny = neighborhood[m][1]
+
+        n += input[i+ny*width+nx] || (
+          x + nx < 0 ||
+          x + nx >= width ||
+          y + ny < 0 ||
           y + ny >= height
-        ) || input[i+nx+ny*height] ? 1 : 0
+        ) ? 1 : 0
       }
+
       output[i] = n >= threshold ? 1 : 0
       i += 1
     }
@@ -73,5 +77,7 @@ function generate(array, opts) {
         array.data[i] = buffer.data[i]
       }
     }
+
+    return array
   }
 }
