@@ -26,8 +26,8 @@ function generate(array, opts) {
   function iterate(inputBuffer, outputBuffer) {
     var input = inputBuffer.data
       , output = outputBuffer.data
-      , width = inputBuffer.shape[1]
-      , height = inputBuffer.shape[0]
+      , width = inputBuffer.shape[0]
+      , height = inputBuffer.shape[1]
       , length = input.length
       , n = 0, i = 0, m = 0
       , x, y, nx, ny
@@ -40,7 +40,7 @@ function generate(array, opts) {
         nx = neighborhood[m][0]
         ny = neighborhood[m][1]
 
-        n += input[i+ny*width+nx] || (
+        n += input[i+ny+nx*height] || (
           x + nx < 0 ||
           x + nx >= width ||
           y + ny < 0 ||
