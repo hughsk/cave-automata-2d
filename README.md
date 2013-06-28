@@ -25,6 +25,8 @@ Takes an ndarray and prepares it for cave generation. Options include:
 * `fill`: By default, the ndarray is populated with random values. If you need
   to disable this, pass `fill: false`.
 * `iterations`: The amount of iterations to apply immediately. Defaults to 0.
+* `border`: If truthy, will include a solid border around the results.
+  Defaults to 1.
 
 Note that this function will modify the array directly.
 

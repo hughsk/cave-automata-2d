@@ -15,6 +15,7 @@ function generate(array, opts) {
 
   var density = opts.density || 0.5
     , threshold = opts.threshold || 5
+    , border = 'border' in opts ? opts.border : 1
     , hood = opts.hood || 1
     , shouldFill = 'fill' in opts ? opts.fill : true
 
@@ -25,13 +26,17 @@ function generate(array, opts) {
     ) ? 1 : 0
   })
 
-  var iterate = stencil(neighborhood, function(p1,p2,p3,p4,p5,p6,p7,p8,p9,pos) {
+  var iterate = border ? stencil(neighborhood, function(p1,p2,p3,p4,p5,p6,p7,p8,p9,pos) {
     return (
       p1+p2+p3+p4+p5+p6+p7+p8+p9 >= threshold ||
-      pos[0] <= 1 ||
-      pos[0] >= width-3 ||
-      pos[1] <= 1 ||
-      pos[1] >= height-3
+      pos[0] < border ||
+      pos[0] > width - border - 3 ||
+      pos[1] < border ||
+      pos[1] > height - border - 3
+    ) ? 1 : 0
+  }) : stencil(neighborhood, function(p1,p2,p3,p4,p5,p6,p7,p8,p9,pos) {
+    return (
+      p1+p2+p3+p4+p5+p6+p7+p8+p9 >= threshold
     ) ? 1 : 0
   })
 
