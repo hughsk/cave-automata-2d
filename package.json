@@ -15,7 +15,7 @@
   "dependencies": {
     "moore": "0.0.x",
     "ndarray-fill": "0.0.0",
-    "ndarray-stencil": "0.0.0",
+    "ndarray-stencil": "~0.1.0",
     "zeros": "0.0.0"
   },
   "devDependencies": {},

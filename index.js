@@ -34,11 +34,11 @@ function generate(array, opts) {
       pos[1] < border ||
       pos[1] > height - border - 3
     ) ? 1 : 0
-  }) : stencil(neighborhood, function(p1,p2,p3,p4,p5,p6,p7,p8,p9,pos) {
+  }, { useIndex: true }) : stencil(neighborhood, function(p1,p2,p3,p4,p5,p6,p7,p8,p9,pos) {
     return (
       p1+p2+p3+p4+p5+p6+p7+p8+p9 >= threshold
     ) ? 1 : 0
-  })
+  }, { useIndex: true })
 
   if (opts.iterations) {
     iterator(opts.iterations)
