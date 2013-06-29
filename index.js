@@ -58,9 +58,9 @@ function generate(array, opts) {
     }
 
     if (iterations % 2) {
-      for (i = 0; i < buffer.data.length; i += 1) {
-        array.data[i] = buffer.data[i]
-      }
+      fill(array, function(x, y) {
+        return buffer.get(x, y)
+      })
     }
 
     return array
