@@ -27,6 +27,8 @@ Takes an ndarray and prepares it for cave generation. Options include:
 * `iterations`: The amount of iterations to apply immediately. Defaults to 0.
 * `border`: If truthy, will include a solid border around the results.
   Defaults to 1.
+* `buffer`: An ndarray buffer to use between iterations, which must be the same
+  shape as the original array. If none is supplied, one will be created.
 
 Note that this function will modify the array directly.
 
