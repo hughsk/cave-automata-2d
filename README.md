@@ -1,4 +1,4 @@
-# cave-automata-2d #
+# cave-automata-2d [![stable](https://rawgithub.com/hughsk/stability-badges/master/dist/stable.svg)](http://github.com/hughsk/stability-badges) #
 
 Generate 2D cave layouts in JavaScript: an implementation of
 the first half of
