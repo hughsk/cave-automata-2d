@@ -14,7 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "moore": "0.0.x",
-    "ndarray-fill": "0.0.0",
+    "ndarray-fill": "0.1.x",
     "ndarray-stencil": "~0.1.0",
     "zeros": "0.0.0"
   },
